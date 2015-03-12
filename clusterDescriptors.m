@@ -57,9 +57,9 @@ end % end for corridors
     VWords = yael_kmeans(single(selectedDescr)',numWords,'niter',20,'verbose',2,'seed',3);
     
     % Save dictionary
-    savepath = fullfile(dictPath,featureType,c);
+    savepath = fullfile(dictPath,featureType);
     mkdir(savepath);
-    save(fullfile(savepath,['dictionary_' c '_P' training_name '.mat']),'VWords')
+    save(fullfile(savepath,['dictionary_P' training_name '.mat']),'VWords')
 
 end % end function
 
