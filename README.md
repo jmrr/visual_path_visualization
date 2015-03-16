@@ -28,3 +28,17 @@ A zip version of the data is included in the 'Downloads' section of this repo.
 
 Select the correct parameters in `setup.m`
 Run `main.m`
+
+## Example
+
+Visual path data reduced to 3 dimensions. Each of the 6 colors represent a different corridor.
+
+![visual_paths.png](https://bitbucket.org/repo/B8ryqr/images/690793531-visual_paths.png)
+
+## to-do
+
+* Add code to work with sparse SIFT
+* Try Earth mover distance or other distances
+
+
+
