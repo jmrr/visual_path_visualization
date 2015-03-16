@@ -1,4 +1,4 @@
-function [] = hovwEncoding(params, trainingSet)
+function [] = hovwEncoding(params, varargin)
 % HOVWENCODING Histogram of Visual Words encoding. Creates histograms
 % with codebook entries (visual words) frequencies by leaving one of the
 % passes out.
@@ -7,6 +7,12 @@ function [] = hovwEncoding(params, trainingSet)
 %          {jose.rivera,ia2109}@imperial.ac.uk
 % Created: November, 2014
 % Latest release: March, 2015
+
+if nargin > 1
+   trainingSet = varargin{1};
+else
+    trainingSet = params.trainingSet;
+end
 
 % CONSTANT PARAMETERS
 selector  = params.passes; % Leave one out strategy pass selector.

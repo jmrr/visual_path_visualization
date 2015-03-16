@@ -1,3 +1,12 @@
+% SETUP selects the different parameters to create a dictionary of visual 
+% words with all the Visual Path data from the RSM dataset and run
+% dimensionality reduction using t-SNE to visualize the data
+
+% Author: Jose Rivera-Rubio
+%         jose.rivera@imperial.ac.uk
+% Date: March, 2015
+
+
 %% Add paths
 
 addpath('bh_tsne');
@@ -13,7 +22,6 @@ params = struct(...
     'datasetDir',    'dataset/location/to/be/defined/',...   % The root path of the RSM dataset
     'trainingPassesPerCorr', 4, ...
     'trainingSet', [7 4 8 3], ...
-    'frameDir',      'frames_resized_w208p',... % Folder name where all the frames have been extracted.
     'descrDir',  ...
     '/descriptor/location/to/be/defined/', ...
     'dictionarySize', 4000, ...

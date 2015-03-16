@@ -1,4 +1,14 @@
 function [featVector , labels] = buildFeatVec(params, varargin)
+% BUILDFEATVEC creates a feature matrix of N examples x D features from
+% frames that have been previously encoded with a dictionary of visual
+% words. Therefore D will coincide with the number of words selected for
+% the dictionary, or dictionary size.
+%
+% See also tSNE_matlab/TSNE and bh_tsne/FAST_TSNE
+
+% Author: Jose Rivera-Rubio
+%         jose.rivera@imperial.ac.uk
+% Date: March, 2015
 
 if nargin > 1
    trainingSet = varargin{1};
