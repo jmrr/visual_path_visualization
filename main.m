@@ -4,6 +4,9 @@
 
 setup;
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% First part: Feature vector creation from BOVW pipeline
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Generate training set indices
 
 trainingSet = randperm(max(params.passes),params.trainingPassesPerCorr);
@@ -18,4 +21,10 @@ hovwEncoding(params, trainingSet);
 
 % Build feature vector for t-sne
 
-buildFeatVec
+[featVector , labels] = buildFeatVec(params, trainingSet);
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Second part: t-sNE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

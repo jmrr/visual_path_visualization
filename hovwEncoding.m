@@ -5,7 +5,8 @@ function [] = hovwEncoding(params, trainingSet)
 
 % Authors: Jose Rivera-Rubio and Ioannis Alexiou
 %          {jose.rivera,ia2109}@imperial.ac.uk
-% Date: November, 2014
+% Created: November, 2014
+% Latest release: March, 2015
 
 % CONSTANT PARAMETERS
 selector  = params.passes; % Leave one out strategy pass selector.
@@ -55,7 +56,7 @@ for corr = params.corridors
         % Encode descriptors with dictionary: vector quantisation
         
         if strcmpi(params.descriptor,'SIFT')
-            funStr = ['encodeBOW' '_sparse(VWords,DescriptorStack)'];
+            funStr = ['encodeBOW' 'Sparse(VWords,DescriptorStack)'];
             HoVW = eval(funStr);
         else
             funStr = ['encodeBOW'  '(VWords,DescriptorStack)'];

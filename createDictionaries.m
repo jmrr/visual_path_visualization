@@ -11,11 +11,11 @@ function [] = createDictionaries(params)
 % combinations.
 % For the time being, leave only one out.
 %
-% See also private/CLUSTER_DESCRIPTORS, private/CLUSTER_DESCRIPTORS_SPARSE
+% See also private/CLUSTERDESCRIPTORS, private/CLUSTERDESCRIPTORSSPARSE
 
-% Authors: Jose Rivera-Rubio and Ioannis Alexiou
-%          {jose.rivera,ia2109}@imperial.ac.uk
-% Date: November, 2014
+% Authors: Jose Rivera-Rubio
+%          jose.rivera@imperial.ac.uk
+% Date: March, 2015
 
 
 dictPath = fullfile(params.dictPath,num2str(params.dictionarySize));

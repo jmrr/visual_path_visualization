@@ -1,13 +1,25 @@
+function [featVector , labels] = buildFeatVec(params, varargin)
+
+if nargin > 1
+   trainingSet = varargin{1};
+else
+    trainingSet = params.trainingSet;
+end
+
+
 selector  = params.passes; % Leave one out strategy pass selector.
 querySet = selector;
 querySet(trainingSet) = [];
 
 trainingSetStr = sprintf('%d',trainingSet);
 
+% Encoded passes location
+loc = params.dictPath;
 
-loc = 'encoded_passes';
+% Declare outputs
 
-labels = [];
+featVector = [];
+labels     = [];
 
 for corr = params.corridors
     
@@ -17,7 +29,7 @@ for corr = params.corridors
         
         p = ['P' num2str(pass)]; % pass string
         
-        fname = fullfile(loc,...
+        fname = fullfile(loc, num2str(params.dictionarySize), params.descriptor, ....
             ['hovw_' params.encoding '_' c '_' trainingSetStr '_' num2str(pass) '.mat']);
         
         load(fname);
