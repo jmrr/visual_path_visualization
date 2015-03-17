@@ -1,4 +1,4 @@
-function ydata = tsne(X, labels, no_dims, initial_dims, perplexity)
+function ydata = tsne(X, labels, no_dims, initial_dims, perplexity, distance)
 %TSNE Performs symmetric t-SNE on dataset X
 %
 %   mappedX = tsne(X, labels, no_dims, initial_dims, perplexity)
@@ -33,6 +33,10 @@ function ydata = tsne(X, labels, no_dims, initial_dims, perplexity)
     if ~exist('perplexity', 'var') || isempty(perplexity)
         perplexity = 30;
     end
+	if ~exist('distance', 'var') || isempty(distance)
+        distance = 'euclidean';
+    end
+
     
     % First check whether we already have an initial solution
     if numel(no_dims) > 1
@@ -69,9 +73,16 @@ function ydata = tsne(X, labels, no_dims, initial_dims, perplexity)
     end
     
     % Compute pairwise distance matrix
-    sum_X = sum(X .^ 2, 2);
-    D = bsxfun(@plus, sum_X, bsxfun(@plus, sum_X', -2 * (X * X')));
     
+    if strcmpi(distance,'euclidean')
+        sum_X = sum(X .^ 2, 2); % Sum of all features for each example
+        D = bsxfun(@plus, sum_X, bsxfun(@plus, sum_X', -2 * (X * X')));
+    elseif strcmpi(distance,'cosine') % Cosine transform
+        sum_X = sqrt(sum(X .^2,2));
+        denom = sum_X * sum_X';
+        
+        D = bsxfun(@rdivide, (X * X'), denom);
+    end
     % Compute joint probabilities
     P = d2p(D, perplexity, 1e-5);                                           % compute affinities using fixed perplexity
     clear D
